@@ -1,0 +1,188 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{calc}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{changepage}
+\usepackage{booktabs}
+\usepackage{capt-of}
+\usepackage{subcaption}
+\usepackage[leftcaption]{sidecap}
+\usepackage[numbers]{natbib}
+\usepackage{times}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{lineno}
+\usepackage{xpatch}
+\xpatchcmd\swappedhead{~}{.~}{}{}
+\allowdisplaybreaks
+
+\newtheoremstyle{mythm}
+{}                % Space above
+{}                % Space below
+{\itshape}        % Theorem body font % (default is "\upshape")
+{1.5em}                % Indent amount
+{\scshape}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{0.5em}               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{mythm}
+
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{result}[theorem]{Result}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheoremstyle{mydef}
+{}                % Space above
+{}                % Space below
+{}        % Theorem body font % (default is "\upshape")
+{1.5em}                % Indent amount
+{\scshape}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{0.5em}               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{mydef}
+
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{remark*}{Remark}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+\item\relax
+  {\hspace{1.5em}\itshape
+    #1\@addpunct{.}}\hspace\labelsep\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\def\Box{\hskip1ex\vbox{\hrule height0.6pt\hbox{%
+      \vrule height1.3ex width0.6pt\hskip0.8ex
+      \vrule width0.6pt}\hrule height0.6pt
+  }}
+\renewcommand{\qed}{\Box}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\purple}[1]{\textcolor{magenta}{#1}}
+\newcommand{\ddet}{\text{det}}
+\renewcommand{\pmod}[1]{\text{ (mod $#1$)}}
+\newcommand{\mmod}[2]{#1\text{ mod }#2}
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\LL}{\mathscr{G}}
+\newcommand{\z}{\mathbin{\ooalign{$\hidewidth i \hidewidth$\cr$\phantom{+}$}}}
+\newcommand{\y}{\mathbin{\ooalign{$\hidewidth j \hidewidth$\cr$\phantom{+}$}}}
+\newcommand{\gf}{\text{GF}}
+
+\newcolumntype{R}{>{\scriptsize}r}
+\newcolumntype{L}{>{\scriptsize}l}
+\newcolumntype{C}{>{\scriptsize}c}
+
+\renewcommand{\citenumfont}[1]{\textbf{#1}}
+\renewcommand{\bibnumfmt}[1]{\textbf{#1.}}
+
+\titleformat{\section}{\normalfont\Large\bfseries\centering}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{0.5em}{}
+
+\newenvironment{myabstract}{\vspace{1em}\begin{adjustwidth}{3em}{3em}\begin{small}\textbf{Abstract.}}{\end{small}\end{adjustwidth}\vspace{1em}}
+\newenvironment{mykeywords}{\vspace{1em}\begin{adjustwidth}{3em}{3em}\begin{small}\textbf{Keywords.}}{\end{small}\end{adjustwidth}\vspace{1em}}
+
+\DeclareCaptionLabelSeparator{custom}{.}
+\DeclareCaptionLabelFormat{custom}
+{%
+  \textsc{#1 #2}
+}
+\DeclareCaptionFormat{custom}
+{%
+  #1#2 #3
+}
+\captionsetup
+{
+  format=custom,%
+  labelformat=custom,%
+  labelsep=custom
+}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 342 Tutorial} \\
+  {\normalsize\bf May 21, 2025}
+\end{center}
+
+\noindent{\bf Question 1.} Prove every integer $n$ with $\abs{n}>1$ is either
+prime or can be factored into a product of prime numbers [Hint: use the
+principle of strong mathematical induction]. \\
+
+\noindent{\bf Question 2.} Use Question 1 to show there are infinitely many
+prime numbers [Hint. use contradiction and consider the number $N=1+p_1 \cdots
+p_n$ where $p_1,\dots,\,p_n$ are the assumed finite number of primes]. \\
+
+\noindent{\bf Question 3.} The gcd of a set $\{a_1,\dots,\,a_n\}$ of integers is
+defined inductively by $(a_1,\,a_2,\dots,\,a_n)=(a_1,\,(a_2,\dots,\,a_n))$. Show
+there exists integers $x_1,\dots,\,x_n$ such that
+\[
+  (a_1,\,a_2,\dots,\,a_n) = x_1a_1 + \cdots + x_na_n.
+\]
+
+\noindent{\bf Question 4.} Let $p$ be a prime. Show that if $p \mid ab$ then $p
+\mid a$ or $p \mid b$. \\
+
+\noindent{\bf Question 5.} If $(a,\,b)=1$, then $(a+b,\,a-b)=1\text{ or }2$. \\
+
+\noindent{\bf Question 6.} If $(a,\,b)=1$, then $(a+b,\,a^2-ab+b^2)=1\text{ or
+}3$. \\
+
+\noindent{\bf Question 7.} If $(a,\,b)=1$, then $(a^n,\,b^k)=1$ for all $n,\,k
+\geqq 1$. \\
+
+\noindent{\bf Question 8.} If $2^n-1$ is a prime, then $n$ is a prime. \\
+
+\noindent{\bf Question 9.} If $2^n+1$ is a prime, then $n$ is a power of 2. \\
+
+\noindent{\bf Question 10.}
+\begin{enumerate*}[{\bf (a)}]
+\item Suppose that $(a,\,b) = (c,\,d) = 1$ and $\frac{a}{b}+\frac{c}{d}=n$ is an
+  integer. Show $\abs{b}=\abs{d}$.
+\item Prove the sum $\sum_{k=1}^n\frac{1}{k}$ is not an integer for $n > 1$.
+\end{enumerate*} \\
+
+\noindent{\bf Question 11.} Prove:
+\begin{enumerate*}[{\bf (a)}]
+\item For every integer $k$ the numbers $2k+1$ and $9k+4$ are relatively prime.
+\item For every integer $k$, express the gcd of $2k-1$ and $9k+4$ as a function
+  of $k$.
+\end{enumerate*} \\
+
+\noindent{\bf Question 12.} Prove that for positive integers $m$ and $a$ we have
+\[
+  \left(
+    \frac{a^m-1}{a-1},\,a-1
+  \right)
+  = (a-1,\,m).
+\]
+
+\end{document}
+
