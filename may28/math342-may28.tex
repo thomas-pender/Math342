@@ -1,0 +1,209 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{calc}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{changepage}
+\usepackage{booktabs}
+\usepackage{capt-of}
+\usepackage{subcaption}
+\usepackage[leftcaption]{sidecap}
+\usepackage[numbers]{natbib}
+\usepackage{times}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{lineno}
+\usepackage{xpatch}
+\xpatchcmd\swappedhead{~}{.~}{}{}
+\allowdisplaybreaks
+
+\newtheoremstyle{mythm}
+{}                % Space above
+{}                % Space below
+{\itshape}        % Theorem body font % (default is "\upshape")
+{1.5em}                % Indent amount
+{\scshape}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{0.5em}               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{mythm}
+
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{result}[theorem]{Result}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheoremstyle{mydef}
+{}                % Space above
+{}                % Space below
+{}        % Theorem body font % (default is "\upshape")
+{1.5em}                % Indent amount
+{\scshape}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{0.5em}               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{mydef}
+
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{remark*}{Remark}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+\item\relax
+  {\hspace{1.5em}\itshape
+    #1\@addpunct{.}}\hspace\labelsep\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\def\Box{\hskip1ex\vbox{\hrule height0.6pt\hbox{%
+      \vrule height1.3ex width0.6pt\hskip0.8ex
+      \vrule width0.6pt}\hrule height0.6pt
+  }}
+\renewcommand{\qed}{\Box}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\purple}[1]{\textcolor{magenta}{#1}}
+\newcommand{\ddet}{\text{det}}
+\renewcommand{\pmod}[1]{\text{ (mod $#1$)}}
+\newcommand{\mmod}[2]{#1\text{ mod }#2}
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\LL}{\mathscr{G}}
+\newcommand{\z}{\mathbin{\ooalign{$\hidewidth i \hidewidth$\cr$\phantom{+}$}}}
+\newcommand{\y}{\mathbin{\ooalign{$\hidewidth j \hidewidth$\cr$\phantom{+}$}}}
+\newcommand{\gf}{\text{GF}}
+
+\newcolumntype{R}{>{\scriptsize}r}
+\newcolumntype{L}{>{\scriptsize}l}
+\newcolumntype{C}{>{\scriptsize}c}
+
+\renewcommand{\citenumfont}[1]{\textbf{#1}}
+\renewcommand{\bibnumfmt}[1]{\textbf{#1.}}
+
+\titleformat{\section}{\normalfont\Large\bfseries\centering}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{0.5em}{}
+
+\newenvironment{myabstract}{\vspace{1em}\begin{adjustwidth}{3em}{3em}\begin{small}\textbf{Abstract.}}{\end{small}\end{adjustwidth}\vspace{1em}}
+\newenvironment{mykeywords}{\vspace{1em}\begin{adjustwidth}{3em}{3em}\begin{small}\textbf{Keywords.}}{\end{small}\end{adjustwidth}\vspace{1em}}
+
+\DeclareCaptionLabelSeparator{custom}{.}
+\DeclareCaptionLabelFormat{custom}
+{%
+  \textsc{#1 #2}
+}
+\DeclareCaptionFormat{custom}
+{%
+  #1#2 #3
+}
+\captionsetup
+{
+  format=custom,%
+  labelformat=custom,%
+  labelsep=custom
+}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 342 Tutorial} \\
+  {\normalsize\bf May 28, 2025}
+\end{center}
+
+\noindent{\bf Question 1.} Prove that if $a$ and $b$ are different integers,
+then there exist infinitely many positive integers $n$ such that $a+n$ and $b+n$
+are coprime. [Hint: Consider linear combinations of $b-a$ and $1-a$ if $a<b$.] \\
+
+\noindent{\bf Question 2.} Prove that every integer $>6$ can be represented as a
+sum of two integers $>1$ which are coprime. [Hint. Consider the three cases
+$n=4k \pm 1$, $n=4k$, and $n=4k+2$ seperately, and write the summands interms of
+$k$]. \\
+
+\noindent{\bf Question 3.} An integer $n$ is {\it powerful} if, whenever a prime
+$p$ divides $n$, $p^2$ divides $n$. Show that every powerful integer $n$ can be
+written as the product of a perfect square and a perfect cube. \\
+
+\noindent{\bf Question 4.} Show that $(a,\,b) \mid [a,\,b]$. When does
+$(a,\,b)=[a,\,b]$?  \\
+
+\noindent{\bf Question 5.} Show that if $a,b,c > 0$, then
+\[
+  (a,\,b,\,c)[ab,\,ac,\,bc] = abc = (ab,\,ac,\,bc)[a,\,b,\,c].
+\]
+
+\noindent{\bf Question 6.} An arithmetic function $f: \N\rightarrow\C$ is {\it
+  multiplicative} if $f(mn)=f(m)f(n)$ whenever $(m,\,n)=1$. The summatory
+function $F$ of an arithmetic function $f:\N\rightarrow\C$ is defined as
+$F(x)=\sum_{d \mid x}f(d)$. The number of divisors functions is defined as
+$\tau(x)=\#\{d : d \mid x\}$.
+\begin{enumerate*}[{\bf (a)}]
+\item Show that every summatory function is multiplicative.
+\item Show the number of divisors function is multiplicative.
+\item If $n=p_1^{e_1}\cdots p_k^{e_k}$, show that $\tau(n)=(e_1+1) \cdots (e_k+1)$.
+\item Prove that for every positive integer $k$, the set of all positive
+  integers $n$ whose number of positive integer divisors is divisible by $k$
+  contains an infinite arithmetic progression. [Hint: Consider a progression
+  defined by a linear combination of consecutive powers of 2, and use part (c).]\\
+\end{enumerate*}
+
+\noindent{\bf Question 7.} Prove that there exists infinitely many triplets of
+positive integers $x,\,y,\,z$ for which the numbers $x(x+1)$, $y(y+1)$, $z(z+1)$
+form an increasing arithmetic progression. [Hint: write $y$ and $z$ as
+increasing linear functions of $x$.] \\
+
+\noindent{\bf Question 8.} Prove that for every even $n>6$ there exist primes
+$p$ and $q$ such that $(n-p,\,n-q)=1$. \\
+
+\noindent{\bf Question 9.}
+\begin{enumerate*}[{\bf (a)}]
+\item Prove that for every three consecutive odd integers, one must be divisible
+  by 3. [Hint. Write $n=2k+1$ and consider the possible cases for $k \pmod{3}$.]
+\item Find all primes which can be represented as both a sum and difference of
+  primes. \\
+\end{enumerate*}
+
+\noindent{\bf Question 10.} Find all integer solutions $x,\,y$ of the equation
+$2x^3+xy-7=0$ and prove that this equation has infinitely many solutions in
+positive rationals. [Hint: Use the possible values for $x$ in the first part to
+infer a possible form for $x$ in the second part.] \\
+
+\noindent{\bf Question 11.} An astronomer knows that a satellite orbits the
+Earth in a period that is an exact multiple of 1 hour that is less than 1 day.
+If the astronomer notes that the satellite completes 11 orbits in an interval
+that starts when a 24-hour clock reads 0 hours and ends when the clock reads 17
+hours, how long is the orbital period of the satellite? \\
+
+\noindent{\bf Question 12.}
+\begin{enumerate*}[{\bf (a)}]
+\item Let $p$ be an odd prime. Show the congruence $x^2 \equiv 1\pmod{p^k}$ has
+  exactly two incongruent solutions, namely, $x \equiv \pm1 \pmod{p^k}$.
+\item Show that the congruence $x^2 \equiv 1 \pmod{2^k}$ has exactly four
+  ingongruent solutions, namely, $x \equiv \pm1\,\pm(1-2^{k-1}) \pmod{2^k}$,
+  when $k>2$. Show there is one when $k=1$ and two when $k=2$.
+\end{enumerate*}
+
+\end{document}
+
