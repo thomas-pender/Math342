@@ -1,0 +1,249 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{calc}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{changepage}
+\usepackage{booktabs}
+\usepackage{capt-of}
+\usepackage{subcaption}
+\usepackage[leftcaption]{sidecap}
+\usepackage[numbers]{natbib}
+\usepackage{times}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{lineno}
+\usepackage{xpatch}
+\xpatchcmd\swappedhead{~}{.~}{}{}
+\allowdisplaybreaks
+
+\newtheoremstyle{mythm}
+{}                % Space above
+{}                % Space below
+{\itshape}        % Theorem body font % (default is "\upshape")
+{1.5em}                % Indent amount
+{\scshape}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{0.5em}               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{mythm}
+
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{result}[theorem]{Result}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheoremstyle{mydef}
+{}                % Space above
+{}                % Space below
+{}        % Theorem body font % (default is "\upshape")
+{1.5em}                % Indent amount
+{\scshape}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{0.5em}               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{mydef}
+
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{remark*}{Remark}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+\item\relax
+  {\hspace{1.5em}\itshape
+    #1\@addpunct{.}}\hspace\labelsep\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\def\Box{\hskip1ex\vbox{\hrule height0.6pt\hbox{%
+      \vrule height1.3ex width0.6pt\hskip0.8ex
+      \vrule width0.6pt}\hrule height0.6pt
+  }}
+\renewcommand{\qed}{\Box}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\purple}[1]{\textcolor{magenta}{#1}}
+\newcommand{\ddet}{\text{det}}
+\renewcommand{\pmod}[1]{\text{ (mod $#1$)}}
+\newcommand{\mmod}[2]{#1\text{ mod }#2}
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\LL}{\mathscr{G}}
+\newcommand{\z}{\mathbin{\ooalign{$\hidewidth i \hidewidth$\cr$\phantom{+}$}}}
+\newcommand{\y}{\mathbin{\ooalign{$\hidewidth j \hidewidth$\cr$\phantom{+}$}}}
+\newcommand{\gf}{\text{GF}}
+
+\newcolumntype{R}{>{\scriptsize}r}
+\newcolumntype{L}{>{\scriptsize}l}
+\newcolumntype{C}{>{\scriptsize}c}
+
+\renewcommand{\citenumfont}[1]{\textbf{#1}}
+\renewcommand{\bibnumfmt}[1]{\textbf{#1.}}
+
+\titleformat{\section}{\normalfont\Large\bfseries\centering}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{0.5em}{}
+
+\newenvironment{myabstract}{\vspace{1em}\begin{adjustwidth}{3em}{3em}\begin{small}\textbf{Abstract.}}{\end{small}\end{adjustwidth}\vspace{1em}}
+\newenvironment{mykeywords}{\vspace{1em}\begin{adjustwidth}{3em}{3em}\begin{small}\textbf{Keywords.}}{\end{small}\end{adjustwidth}\vspace{1em}}
+
+\DeclareCaptionLabelSeparator{custom}{.}
+\DeclareCaptionLabelFormat{custom}
+{%
+  \textsc{#1 #2}
+}
+\DeclareCaptionFormat{custom}
+{%
+  #1#2 #3
+}
+\captionsetup
+{
+  format=custom,%
+  labelformat=custom,%
+  labelsep=custom
+}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 342 Tutorial} \\
+  {\normalsize\bf June 4, 2025}
+\end{center}
+
+\noindent{\bf Question 1.}
+\begin{enumerate*}[{\bf (a)}]
+\item What is the remainder of when $5^{100}$ is divided by $7$?
+\item What is the remainder when $18!$ is divided by $437$? \\
+\end{enumerate*}
+
+\noindent{\bf Question 2.} Show that if $p$ is an odd prime, then $2(p-3) \equiv
+-1 \pmod{p}$. \\
+
+\noindent{\bf Question 3.} Show that if $n$ is a composite integer with $n \neq
+4$, then $(n-1)! \equiv 0 \pmod{n}$. \\
+
+\noindent{\bf Question 4.} Show that $1^{p-1}+2^{p-1}+\cdots+(p-1)^{p-1} \equiv
+-1 \pmod{p}$. \\
+
+\noindent{\bf Question 5.}
+\begin{enumerate*}[{\bf (a)}]
+\item Let $p$ be a prime. Show that $\binom{p}{n} \equiv 0 \pmod{p}$ whenever
+  $1 < n < p$.
+\item Show that $(x_1+\cdots+x_n)^{p^e} \equiv x_1^{p^e}+\cdots+x_n^{p^e} \pmod{p}$.
+\item Show that $1^p+2^p+\cdots+(p-1)^p \equiv 0 \pmod{p}$. \\
+\end{enumerate*}
+
+\noindent{\bf Question 6.}
+\begin{enumerate*}[{\bf (a)}]
+\item Show that if $p$ and $q$ are distinct primes, then $p^{q-1}+q^{p-1} \equiv
+  1 \pmod{pq}$.
+\item Show that if $p$ is prime, then $p \mid (a^p+(p-1)!a)$.
+\item Show that if $p$ is an odd prime, then $1^22^2 \cdots (p-4)^2(p-2)^2$ is
+  equivalent to $(-1)^{(p+1)/2}$ modulo $p$. \\
+\end{enumerate*}
+
+The questions 7 and 9 each show by elementary means that $\phi$ is a
+multiplicative arithmetical function (your textbook contains a third). Next
+week, we will derive an algebraic proof using the Chinese Remainder Theorem.
+Many of the results you are learning via elementary means admit more natural
+interpretations in more general algebraic settings. We will see that the main
+properties of the Euler Totient Function are easier understood in this more
+general setting. \\
+
+\noindent{\bf Question 7.}
+\begin{enumerate*}[{\bf (a)}]
+\item Suppose that $(m,\,m')=1$, and that $a$ runs through a complete system of
+  residues modulo $m$, and that $a'$ runs through a complete system of integers
+  modulo $m'$. Show that $a'm+am'$ runs through a complete set of residues
+  modulo $mm'$.
+\item Show that $\phi$ is multiplicative, that is, if $(m,\,m')=1$, then
+  $\phi(mm')=\phi(m)\phi(m')$. [Hint: Consider $(a'm+am',\,mm')$ modulo both $m$
+  and $m'$.] \\
+\end{enumerate*}
+
+Given two arithmetical functions $f$ and $g$, we define their Dirichlet product
+$f*g$ as $(f*g)(n)=\sum_{d \mid n}f(n)g(\frac{n}{d})$. The function $\iota$ is
+defined by $\iota(n)=\lfloor \frac{1}{n} \rfloor$. We call $\iota$ the
+arithmetic identity. \\
+
+\noindent{\bf Question 8.} Let $f$ and $g$ be two arithmetical functions. Show
+the following.
+\begin{enumerate*}[{\bf (a)}]
+\item $f*g = g*f$.
+\item $(f*g)*h=f*(g*h)$.
+\item $f*\iota = \iota*f=f$.
+\item $g$ is the arithmetic inverse of $f$ if $f*g=\iota$. Show the arithmetic
+  function $f$ has an inverse if and only if $f(1) \neq 0$. Show that if $f$ has
+  an arithmetic inverse, then it is unique.
+\item If $h$ is the arithmetic inverse of $g$, then $(f*g)*h=f$.
+\item If $f$ and $g$ are multiplicative, then so is $f*g$. \\
+\end{enumerate*}
+
+The M\"{o}bius function $\mu(n)$ is defined as follows: $\mu(1)=1$; if
+$n=p_1^{e_1} \cdots p^{e_k}$, then $\mu(n)=(-1)^k$ if $e_1=\cdots=e_k=1$;
+$\mu(n)=0$ otherwise. \\
+
+\noindent{\bf Question 9.} Show the following.
+\begin{enumerate*}[{\bf (a)}]
+\item $\mu$ is multiplicative.
+\item $\mu(n)=\sum_{d \mid n}\lfloor \frac{1}{n} \rfloor$.
+\item Show that $\phi$ is multiplicative using part (b). [Hint: Argue that you
+  can write $\phi(n)=\sum_{k = 1}^n\lfloor \frac{1}{(n,\,k)} \rfloor$] \\
+\end{enumerate*}
+
+\noindent{\bf Question 10.} Show the following properties of $\phi$.
+\begin{enumerate}[{\bf (a)}]
+\item $\phi(p^e)=p^e-p$ for every prime $p$ and $e>0$.
+\item If $n=p_1^{e_1} \cdots p_k^{e_k}$, then $\phi(n)=n\prod_{p \mid
+    n}(1-\frac{1}{p})$.
+\item $\phi(mn)=\phi(m)\phi(n)d/\phi(d)$ where $d=(n,\,m)$.
+\item $a \mid b$ implies $\phi(a) \mid \phi(b)$.
+\item $\phi(n)$ is even for $n \geqq 3$. Moreover, if $n$ has $r$ distinct odd
+  prime factors, then $2^r \mid \phi(n)$. \\
+\end{enumerate}
+
+An integer $a$ is a quadratic residue mod the odd prime $p$ if there is a
+solution $x$ to $x^2 \equiv q \pmod{p}$. The integer $a$ is a quadratic
+nonresidue mod $p$ if there is no such $x$. The Legendre symbol $(\frac{a}{p})$
+is defined as
+\[
+  \left( \frac{a}{p} \right) =
+  \begin{cases}
+    +1 & \text{if $a$ is a quadratic residue mod $p$,} \\
+    -1 & \text{if $a$ is a quadratic nonresidue mod $p$.}
+  \end{cases}
+\] \\
+
+\noindent{\bf Question 11.}
+\begin{enumerate*}[{\bf (a)}]
+\item Show that if $a$ is a quadratic residue mod the odd prime $p$, then there
+  are at most two incongruent solutions.
+\item Show that $(p-1)!$ is congruent to $-\left( \frac{a}{p}
+  \right)a^{(p+1)/2}$ modulo $p$.
+\end{enumerate*}
+
+\end{document}
+
