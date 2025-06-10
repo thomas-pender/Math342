@@ -1,0 +1,188 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amssymb, amsmath, amsthm, mathrsfs}
+\usepackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{calc}
+\usepackage[inline,shortlabels]{enumitem}
+\usepackage{changepage}
+\usepackage{booktabs}
+\usepackage{capt-of}
+\usepackage{subcaption}
+\usepackage[leftcaption]{sidecap}
+\usepackage[numbers]{natbib}
+\usepackage{times}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{lineno}
+\usepackage{xpatch}
+\xpatchcmd\swappedhead{~}{.~}{}{}
+\allowdisplaybreaks
+
+\newtheoremstyle{mythm}
+{}                % Space above
+{}                % Space below
+{\itshape}        % Theorem body font % (default is "\upshape")
+{1.5em}                % Indent amount
+{\scshape}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{0.5em}               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{mythm}
+
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{question}[theorem]{Question}
+\newtheorem{result}[theorem]{Result}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheoremstyle{mydef}
+{}                % Space above
+{}                % Space below
+{}        % Theorem body font % (default is "\upshape")
+{1.5em}                % Indent amount
+{\scshape}       % Theorem head font % (default is \mdseries)
+{.}               % Punctuation after theorem head % default: no punctuation
+{0.5em}               % Space after theorem head
+{}                % Theorem head spec
+\theoremstyle{mydef}
+
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{remark*}{Remark}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+\item\relax
+  {\hspace{1.5em}\itshape
+    #1\@addpunct{.}}\hspace\labelsep\ignorespaces
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\def\Box{\hskip1ex\vbox{\hrule height0.6pt\hbox{%
+      \vrule height1.3ex width0.6pt\hskip0.8ex
+      \vrule width0.6pt}\hrule height0.6pt
+  }}
+\renewcommand{\qed}{\Box}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\purple}[1]{\textcolor{magenta}{#1}}
+\newcommand{\ddet}{\text{det}}
+\renewcommand{\pmod}[1]{\text{ (mod $#1$)}}
+\newcommand{\mmod}[2]{#1\text{ mod }#2}
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\LL}{\mathscr{G}}
+\newcommand{\z}{\mathbin{\ooalign{$\hidewidth i \hidewidth$\cr$\phantom{+}$}}}
+\newcommand{\y}{\mathbin{\ooalign{$\hidewidth j \hidewidth$\cr$\phantom{+}$}}}
+\newcommand{\gf}{\text{GF}}
+
+\newcolumntype{R}{>{\scriptsize}r}
+\newcolumntype{L}{>{\scriptsize}l}
+\newcolumntype{C}{>{\scriptsize}c}
+
+\renewcommand{\citenumfont}[1]{\textbf{#1}}
+\renewcommand{\bibnumfmt}[1]{\textbf{#1.}}
+
+\titleformat{\section}{\normalfont\Large\bfseries\centering}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{0.5em}{}
+
+\newenvironment{myabstract}{\vspace{1em}\begin{adjustwidth}{3em}{3em}\begin{small}\textbf{Abstract.}}{\end{small}\end{adjustwidth}\vspace{1em}}
+\newenvironment{mykeywords}{\vspace{1em}\begin{adjustwidth}{3em}{3em}\begin{small}\textbf{Keywords.}}{\end{small}\end{adjustwidth}\vspace{1em}}
+
+\DeclareCaptionLabelSeparator{custom}{.}
+\DeclareCaptionLabelFormat{custom}
+{%
+  \textsc{#1 #2}
+}
+\DeclareCaptionFormat{custom}
+{%
+  #1#2 #3
+}
+\captionsetup
+{
+  format=custom,%
+  labelformat=custom,%
+  labelsep=custom
+}
+
+\begin{document}
+
+\begin{center}
+  {\Large\bfseries Math 342 Tutorial} \\
+  {\normalsize\bf June 11, 2025}
+\end{center}
+
+\noindent{\bf Question 1.} Find all solutions to following systems of
+congruences in two ways: first, using the Chinese Remainder Theorem; and second,
+by iteratively solving and substituting linear congruences.
+
+\begin{enumerate}[(a)]
+\item $x \equiv 1 \pmod{2},\, x \equiv 2 \pmod{3},\, x \equiv 3 \pmod{5}$.
+\item $x \equiv 0 \pmod{2},\, x \equiv 0 \pmod{3},\, x \equiv 1 \pmod{5},\, x
+  \equiv 6 \pmod{7}$.
+\end{enumerate}
+
+\noindent{\bf Question 2.} Give the following generalization of the Chinese
+Remainder Theorem. Let $m_1,\dots,\,m_r$ be pairwise coprime integers, and let
+$a_1,\dots,\,a_r$ be given integers such that each $(a_i,\,m_i)=1$. Then the
+system $a_1x \equiv b_1 \pmod{m_1}, \dots,\, a_rx \equiv b_r \pmod{m_r}$ has
+exactly one solution modulo $m_1 \cdots m_r$. \\
+
+\noindent{\bf Question 3.}
+\begin{enumerate*}[(a)]
+\item Show that the system of congruences $x \equiv a_1 \pmod{m_1}, \dots,\, x
+  \equiv a_r \pmod{m_r}$ has a solution if and only if $(m_i,\,m_j) \mid
+  (a_i-a_j)$ for all $i<j$. Show that if a solution exists, then it is unique
+  modulo $[m_1,\dots,\,m_r]$. [Hint: succesively substitute linear equations.]
+\item Solve the system $x \equiv 4 \pmod{6},\, x \equiv 13 \pmod{15}$.
+\item Solve the system $x \equiv 5 \pmod{6},\, x \equiv 3 \pmod{10},\, x \equiv
+  8 \pmod{15}$.
+\item Does the system $x \equiv 1 \pmod{8},\, x \equiv 3 \pmod{9}$, $x \equiv 2
+  \pmod{12}$ have any solutions?
+\end{enumerate*} \\
+
+\noindent{\bf Question 4.} Show there are arbitrarily long strings of
+consecutive integers each divisible by a perfect square greater than 1. [Hint:
+Use CRT to show there is a simultaneous solution to the system $x \equiv 0
+\pmod{4}$, $x \equiv -1 \pmod{9}$, $x \equiv -2 \pmod{25}$, $\dots$, $x \equiv
+-k+1 \pmod{p_k^2}$ where $p_k$ is the $k$th prime.] \\
+
+\noindent{\bf Question 5.} Let $m=2^{e_0}p_1^{e_1} \cdots p_k^{e_k}$. Show the
+congruence $x^2 \equiv 1 \pmod{m}$ has exactly $r^{r+s}$ solutions where $s=0$
+is $e_0=0\text{ or }1$, $s=1$ if $e_0=2$, and $s=2$ if $e_0>2$. [Hint: Use
+question 12 from the May 28th tutorial set.] \\
+
+\noindent{\bf Question 6.} Find all solutions to the following congruences.
+\begin{enumerate*}[(a)]
+\item $x^3+8x^2-x-1 \equiv 0 \pmod{121}$.
+\item $x^2+4x+2 \equiv 0 \pmod{343}$.
+\item $13x^7-42x-649 \equiv 0 \pmod{1323}$.
+\end{enumerate*} \\
+
+\noindent{\bf Question 7.} Suppose $(a,\,p)=1$. Use Hensel's Lemma to find a
+recursive formula for the solutions of $ax \equiv 1 \pmod{p^k}$ for all positive
+integers $k$. \\
+
+\end{document}
+
