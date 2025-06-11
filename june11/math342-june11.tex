@@ -144,10 +144,11 @@ by iteratively solving and substituting linear congruences.
 \end{enumerate}
 
 \noindent{\bf Question 2.} Give the following generalization of the Chinese
-Remainder Theorem. Let $m_1,\dots,\,m_r$ be pairwise coprime integers, and let
-$a_1,\dots,\,a_r$ be given integers such that each $(a_i,\,m_i)=1$. Then the
+Remainder Theorem. Let $m_1,\dots,\,m_r$ be pairwise coprime integers. Then the
 system $a_1x \equiv b_1 \pmod{m_1}, \dots,\, a_rx \equiv b_r \pmod{m_r}$ has
-exactly one solution modulo $m_1 \cdots m_r$. \\
+exactly one solution modulo
+$\frac{m_1}{(a_1,\,m_1)}\cdots\frac{m_r}{(a_r,\,m_r)}$ if and only if each
+$(a_i,\,m_i) \mid b_i$. \\
 
 \noindent{\bf Question 3.}
 \begin{enumerate*}[(a)]
